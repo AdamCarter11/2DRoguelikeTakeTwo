@@ -11,15 +11,25 @@ public class Player : MonoBehaviour
     private Vector2 mousePos;
     public Weapon weapon;
 
+    private float xp;
+    [SerializeField] XpBar xpBar;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        xp = 0; //load saved xp
+        xpBar.SetXp(xp);
     }
 
     void Update()
     {
         MovementInput();
         AimingFiring();
+
+        if(Input.GetKeyDown(KeyCode.Space)){
+            xp++;
+            xpBar.SetXp(xp);
+        }
         
     }
 
