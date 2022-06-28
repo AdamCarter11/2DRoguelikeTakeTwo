@@ -12,6 +12,12 @@ public class XpBar : MonoBehaviour
     public void SetXp(float xp){
         slider.value = xp;
 
+        if(slider.value == slider.maxValue){
+            GameManager.Instance.playerXp = 0;
+            GameManager.Instance.playerLevel++;
+            slider.maxValue = slider.maxValue + 1;
+        }
+
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }
