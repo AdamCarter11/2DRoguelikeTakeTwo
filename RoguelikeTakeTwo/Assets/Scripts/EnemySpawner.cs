@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnRadius = 7, time = 1.5f;
+    [SerializeField] private float time = 1.5f;
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private GameObject player;
     private Vector2 spawnPos;
@@ -15,8 +15,6 @@ public class EnemySpawner : MonoBehaviour
     }
 
     IEnumerator SpawnEnemy(){
-        //Vector2 spawnPos = player.transform.position;
-        //spawnPos += Random.insideUnitCircle.normalized * spawnRadius;
         int randomSide = Random.Range(0,4);
         float randomPos = Random.Range(0f,1f);
         if(randomSide == 0){
