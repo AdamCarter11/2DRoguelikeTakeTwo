@@ -15,6 +15,9 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         startingSpeed = speed;
+        if(target == null){
+            target = GameObject.Find("Player").transform;
+        }
     }
 
     // Update is called once per frame
