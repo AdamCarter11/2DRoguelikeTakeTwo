@@ -16,3 +16,4 @@ MonoBehaviour:
   upgradeDesc: 4th Upgrade
   upgradeSprite: {fileID: -2413806693520163455, guid: 7c88b2442baaf484ca36adc926c6db0a, type: 3}
   unlockedUpgrades: []
+  prereqs: {fileID: 11400000, guid: b3f37eb78607a574cbe30dfe9ed61f10, type: 2}

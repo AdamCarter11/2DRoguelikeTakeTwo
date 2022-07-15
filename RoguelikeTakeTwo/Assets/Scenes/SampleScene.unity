@@ -1250,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1029142107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2258,9 +2258,33 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: firstDesc
+      value: 
+      objectReference: {fileID: 1824995717}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: thirdDesc
+      value: 
+      objectReference: {fileID: 464608795}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: firstImage
+      value: 
+      objectReference: {fileID: 1006043158}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: panelPopUp
       value: 
       objectReference: {fileID: 1029142106}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: secondDesc
+      value: 
+      objectReference: {fileID: 73725679}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: thirdImage
+      value: 
+      objectReference: {fileID: 1942752842}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: secondImage
+      value: 
+      objectReference: {fileID: 946078630}
     - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: gradient.key1.g
       value: 1
@@ -2269,6 +2293,26 @@ PrefabInstance:
       propertyPath: gradient.key1.r
       value: 0.022880435
       objectReference: {fileID: 0}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: allUpgrades.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: allUpgrades.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b3f37eb78607a574cbe30dfe9ed61f10, type: 2}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: allUpgrades.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d8e66e0c753008a4daf9a22ff5ef1047, type: 2}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: allUpgrades.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 76cc1012b35bac24a9e1674d6645c175, type: 2}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: allUpgrades.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 28b45794c99aa8e409db4603867ab53d, type: 2}
     - target: {fileID: 1679316241379534912, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
