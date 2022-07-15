@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
         //xp = 0; //load saved xp
         GameManager.Instance.playerXp = 0;
         xpBar.SetXp(GameManager.Instance.playerXp);
+
+        GameManager.Instance.flatSpeedModifier = 0;
+        GameManager.Instance.dynamicSpeedModifier = 1;
     }
 
     void Update()
@@ -56,7 +59,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() {
         //movement
-        rb.velocity = moveInput * moveSpeed;
+        rb.velocity = moveInput * (moveSpeed + GameManager.Instance.flatSpeedModifier) * GameManager.Instance.dynamicSpeedModifier;
 
         //aiming
         Vector2 aimDir = mousePos - rb.position;

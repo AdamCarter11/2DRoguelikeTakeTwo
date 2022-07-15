@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public float playerXp {get; set;}
     public int playerLevel {get; set;}
 
+    //upgrades
+    public float flatSpeedModifier {get; set;}
+    public float dynamicSpeedModifier {get; set;}
+
     private void Awake() {
         Instance = this;
     }

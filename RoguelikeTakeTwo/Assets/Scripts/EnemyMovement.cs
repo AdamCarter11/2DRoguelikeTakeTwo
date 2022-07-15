@@ -35,7 +35,6 @@ public class EnemyMovement : MonoBehaviour
     void MoveEnemy(Vector2 direction){
         rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
-
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Bullet")){
             health -= 1;

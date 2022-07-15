@@ -318,7 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c885788fe288d8141b270a4515843ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRadius: 7
   time: 1.5
   enemies:
   - {fileID: 7042232404871029520, guid: f64a286a61aede24fa7b52abc5c5f126, type: 3}
@@ -1251,7 +1250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1029142107
 RectTransform:
   m_ObjectHideFlags: 0
