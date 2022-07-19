@@ -14,6 +14,9 @@ public class XpBar : MonoBehaviour
     [SerializeField] Image firstImage, secondImage, thirdImage;
     [SerializeField] Text firstDesc, secondDesc, thirdDesc;
 
+    //used to gain access to the functions inside of the script
+    [SerializeField] ButtonUpgrades buttonScript;
+
     [SerializeField] UpgradeData[] allUpgrades;
     private List<UpgradeData> possibleUpgrades = new List<UpgradeData>();
     private List<UpgradeData> lockedUpgrades = new List<UpgradeData>();

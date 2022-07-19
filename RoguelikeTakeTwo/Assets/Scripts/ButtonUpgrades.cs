@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class ButtonUpgrades : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void SetUpgrade(){
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    }
+    public void ApplyUpgrade(){
+
     }
 }
