@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     private Vector2 mousePos;
     public Weapon weapon;
 
+    private bool canShoot = true;
+    private float shotDelay = .3f;
+
     //private float xp;
     [SerializeField] XpBar xpBar;
 
@@ -51,10 +54,18 @@ public class Player : MonoBehaviour
     }
     private void AimingFiring(){
         //firing
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButton(0) && canShoot){
             weapon.Fire();
+            canShoot = false;
+            StartCoroutine(ShootDelay(shotDelay));
         }
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    //used for shot delay
+    IEnumerator ShootDelay(float delay){
+        yield return new WaitForSeconds(delay);
+        canShoot = true;
     }
 
     private void FixedUpdate() {
