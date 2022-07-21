@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ButtonUpgrades : MonoBehaviour
 {
+    [SerializeField] GameObject panelPopUp;
     Button bt;
     private void Start() {
         bt = this.GetComponent<Button>();
@@ -15,5 +16,12 @@ public class ButtonUpgrades : MonoBehaviour
     public void ApplyUpgrade(){
         string abilityName = this.GetComponent<Image>().sprite.name;
         print(abilityName);
+
+        if(abilityName == "Circle"){
+            GameManager.Instance.flatSpeedModifier+=5;
+        }
+
+        panelPopUp.SetActive(false);
+        Time.timeScale = 1;
     } 
 }
