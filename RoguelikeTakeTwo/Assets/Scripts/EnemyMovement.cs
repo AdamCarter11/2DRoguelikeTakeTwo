@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float speed;
-    [SerializeField] int health;
+    [SerializeField] float health;
     private float startingSpeed;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -37,9 +37,21 @@ public class EnemyMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Bullet")){
-            health -= 1;
+            if (!GameManager.Instance.lowerHealthDamage)
+            {
+                health -= GameManager.Instance.flatDamage;
+            }
+            else
+            {
+                health -= GameManager.Instance.flatDamage +
+                    ((1 - (GameManager.Instance.playerHealth / GameManager.Instance.maxHealth)) * GameManager.Instance.flatDamage);
+            }
             Destroy(other.gameObject);
             if(health <= 0){
+                if(GameManager.Instance.killChainBonus)
+                {
+                    GameManager.Instance.killChainCount++;
+                }
                 GameManager.Instance.playerXp++;
                 Destroy(gameObject);
             }

@@ -20,6 +20,26 @@ public class ButtonUpgrades : MonoBehaviour
         if(abilityName == "Circle"){
             GameManager.Instance.flatSpeedModifier+=5;
         }
+        else if (abilityName == "FlatHealth")
+        {
+            GameManager.Instance.maxHealth += 25;
+        }
+        else if (abilityName == "KillChain")
+        {
+            GameManager.Instance.killChainBonus = true;
+        }
+        else if (abilityName == "RegenSpeed")
+        {
+            GameManager.Instance.regenSpeed += 1;
+        }
+        else if (abilityName == "FlatDamage")
+        {
+            GameManager.Instance.flatDamage += 1;
+        }
+        else if (abilityName == "LowerHealth")
+        {
+            GameManager.Instance.lowerHealthDamage = true;
+        }
 
         panelPopUp.SetActive(false);
         Time.timeScale = 1;

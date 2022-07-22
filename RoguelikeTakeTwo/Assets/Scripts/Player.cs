@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.flatSpeedModifier = 0;
         GameManager.Instance.dynamicSpeedModifier = 1;
+
+        // damage
+        GameManager.Instance.flatDamage = 1;
+        GameManager.Instance.lowerHealthDamage = false;
     }
 
     void Update()
