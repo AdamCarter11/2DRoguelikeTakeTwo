@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfUpgrade: Damage Upgrade
   upgradeDesc: Damage raises, the lower the health of the player.
-  upgradeSprite: {fileID: -2413806693520163455, guid: 7c88b2442baaf484ca36adc926c6db0a, type: 3}
+  upgradeSprite: {fileID: 21300000, guid: 884584cea631bd2409ab8d9a057f69b5, type: 3}
   unlockedUpgrades: []
   prereqs: {fileID: 0}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameOfUpgrade: Health Upgrade
   upgradeDesc: Flat Health Up.
-  upgradeSprite: {fileID: -2413806693520163455, guid: 7c88b2442baaf484ca36adc926c6db0a, type: 3}
+  upgradeSprite: {fileID: 21300000, guid: cbbf22ab51ca0a44c9a8fb2dc1dc1b4e, type: 3}
   unlockedUpgrades: []
   prereqs: {fileID: 0}
