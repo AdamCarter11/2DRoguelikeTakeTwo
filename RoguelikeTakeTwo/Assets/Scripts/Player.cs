@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public Weapon weapon;
 
     private bool canShoot = true;
-    private float shotDelay = .3f;
+    //private float shotDelay = .3f;
 
     private bool canTakeDamage = true;
     private bool speedRepeat = true;
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         // damage
         GameManager.Instance.flatDamage = 1;
         GameManager.Instance.lowerHealthDamage = false;
+        GameManager.Instance.shotDelay = .5f;
     }
 
     void Update()
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour
         if(Input.GetMouseButton(0) && canShoot){
             weapon.Fire();
             canShoot = false;
-            StartCoroutine(ShootDelay(shotDelay));
+            StartCoroutine(ShootDelay(GameManager.Instance.shotDelay));
         }
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -113,7 +114,9 @@ public class Player : MonoBehaviour
             GameManager.Instance.playerHealth -= 10;
             if(GameManager.Instance.onDamageSpeedBonus){
                 StartCoroutine(DamagedBonusSpeed());
-                print(onDamageSpeed);
+            }
+            if(GameManager.Instance.onDamageShotSpeedBonus){
+                StartCoroutine(DamagedShotSpeed());
             }
             if(GameManager.Instance.playerHealth <= 0){
                 print("GAMEOVER");
@@ -125,6 +128,12 @@ public class Player : MonoBehaviour
         onDamageSpeed = 5;
         yield return new WaitForSeconds(3f);
         onDamageSpeed = 0;
+    }
+    IEnumerator DamagedShotSpeed(){
+        float tempHolder = GameManager.Instance.shotDelay;
+        GameManager.Instance.shotDelay -= .1f;
+        yield return new WaitForSeconds(3f);
+        GameManager.Instance.shotDelay = tempHolder;
     }
     IEnumerator TakeDamageTimer(){
         canTakeDamage = false;

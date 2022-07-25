@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a06286c94300e0349bd8946ced905f77, type: 3}
-  m_Name: DamagedSpeed
+  m_Name: FlatShotSpeed
   m_EditorClassIdentifier: 
-  nameOfUpgrade: DamagedSpeed
-  upgradeDesc: When damaged, temporarily move faster
-  upgradeSprite: {fileID: 21300000, guid: 05e8747bfddcc00408b1f0a3e44aa0e2, type: 3}
-  unlockedUpgrades: []
-  prereqs: {fileID: 11400000, guid: ebdc32513f915b84ab9d8c4a3a4ef5d0, type: 2}
+  nameOfUpgrade: FlatShotSpeed
+  upgradeDesc: Increase shot speed by a flat amount
+  upgradeSprite: {fileID: 21300000, guid: 791b3203852b49346a78cecaa27758e3, type: 3}
+  unlockedUpgrades:
+  - {fileID: 11400000, guid: 5d1ff547ff0316a4e8e470188368259d, type: 2}
+  prereqs: {fileID: 0}

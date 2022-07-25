@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     public float speedChainCount { get; set; }
     public bool onDamageSpeedBonus { get; set; }
 
+    public float shotDelay { get; set; }
+    public bool onDamageShotSpeedBonus { get; set; }
+
     private void Awake() {
         Instance = this;
     }
