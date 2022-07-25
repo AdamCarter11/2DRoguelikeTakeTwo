@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private float shotDelay = .3f;
 
     private bool canTakeDamage = true;
+    private bool speedRepeat = true;
 
     [HideInInspector] public static float speedKillTimer = 0;
 
@@ -42,8 +43,9 @@ public class Player : MonoBehaviour
         AimingFiring();
         XpStuff();
         
-        if(GameManager.Instance.speedChainBonus){
+        if(GameManager.Instance.speedChainBonus && speedRepeat){
             InvokeRepeating("SpeedChainTimer", 1.0f, 1.0f);
+            speedRepeat = false;
         }
     }
 
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
         if(speedKillTimer == 0){
             GameManager.Instance.speedChainCount = 0;
             print("KillStreak Lost");
+            speedRepeat = true;
             CancelInvoke("SpeedChainTimer");
         }
     }
