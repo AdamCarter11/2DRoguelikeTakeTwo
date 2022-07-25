@@ -15,7 +15,8 @@ public class XpBar : MonoBehaviour
     [SerializeField] Text firstDesc, secondDesc, thirdDesc;
 
     [SerializeField] UpgradeData[] allUpgrades;
-    private List<UpgradeData> possibleUpgrades = new List<UpgradeData>();
+    [HideInInspector] public static List<UpgradeData> possibleUpgrades = new List<UpgradeData>();
+    //might not even need this var
     private List<UpgradeData> lockedUpgrades = new List<UpgradeData>();
 
     List<int> usedVals = new List<int>();
@@ -43,7 +44,6 @@ public class XpBar : MonoBehaviour
             Time.timeScale = 0;
             
             DisplayUpgrades();
-            
         }
 
         fill.color = gradient.Evaluate(slider.normalizedValue);

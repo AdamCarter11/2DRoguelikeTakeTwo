@@ -52,6 +52,10 @@ public class EnemyMovement : MonoBehaviour
                 {
                     GameManager.Instance.killChainCount++;
                 }
+                if(GameManager.Instance.speedChainBonus){
+                    GameManager.Instance.speedChainCount += .5f;
+                    Player.speedKillTimer = 5;
+                }
                 GameManager.Instance.playerXp++;
                 Destroy(gameObject);
             }

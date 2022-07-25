@@ -15,10 +15,14 @@ public class ButtonUpgrades : MonoBehaviour
 
     public void ApplyUpgrade(){
         string abilityName = this.GetComponent<Image>().sprite.name;
-        print(abilityName);
-
-        if(abilityName == "Circle"){
+        //print(abilityName);
+        
+        if(abilityName == "FlatSpeed"){
             GameManager.Instance.flatSpeedModifier+=5;
+        }
+        else if (abilityName == "SpeedChain")
+        {
+            GameManager.Instance.speedChainBonus = true;
         }
         else if (abilityName == "FlatHealth")
         {
@@ -43,5 +47,18 @@ public class ButtonUpgrades : MonoBehaviour
 
         panelPopUp.SetActive(false);
         Time.timeScale = 1;
+
+        
+        //removes upgrade from list assuming possible upgrades is static
+        foreach (var upgrade in XpBar.possibleUpgrades){
+            if(upgrade.upgradeSprite.name == abilityName){
+                XpBar.possibleUpgrades.Remove(upgrade);
+                foreach(var upgradeInLocked in upgrade.unlockedUpgrades){
+                    XpBar.possibleUpgrades.Add(upgradeInLocked);
+                }
+                break;
+            }
+        }
+        
     } 
 }

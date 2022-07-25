@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     public float flatSpeedModifier {get; set;}
     public float dynamicSpeedModifier {get; set;}
 
+    public bool speedChainBonus { get; set; }
+    public float speedChainCount { get; set; }
+
     private void Awake() {
         Instance = this;
     }

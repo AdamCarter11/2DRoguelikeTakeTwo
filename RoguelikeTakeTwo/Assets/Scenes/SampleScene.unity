@@ -190,7 +190,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Desc2
@@ -403,7 +403,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Desc3
@@ -1928,7 +1928,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Desc1
@@ -2427,7 +2427,7 @@ PrefabInstance:
     - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: allUpgrades.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b3f37eb78607a574cbe30dfe9ed61f10, type: 2}
+      objectReference: {fileID: 11400000, guid: ebdc32513f915b84ab9d8c4a3a4ef5d0, type: 2}
     - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: allUpgrades.Array.data[1]
       value: 

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06286c94300e0349bd8946ced905f77, type: 3}
+  m_Name: SpeedChain
+  m_EditorClassIdentifier: 
+  nameOfUpgrade: Speed Chain
+  upgradeDesc: Increase speed for a couple of seconds after kill
+  upgradeSprite: {fileID: 21300000, guid: 521de782de9be4c45a02ba509e4eae14, type: 3}
+  unlockedUpgrades: []
+  prereqs: {fileID: 11400000, guid: ebdc32513f915b84ab9d8c4a3a4ef5d0, type: 2}
