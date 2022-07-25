@@ -24,6 +24,10 @@ public class ButtonUpgrades : MonoBehaviour
         {
             GameManager.Instance.speedChainBonus = true;
         }
+        else if (abilityName == "DamagedSpeed")
+        {
+            GameManager.Instance.onDamageSpeedBonus = true;
+        }
         else if (abilityName == "FlatHealth")
         {
             GameManager.Instance.maxHealth += 25;

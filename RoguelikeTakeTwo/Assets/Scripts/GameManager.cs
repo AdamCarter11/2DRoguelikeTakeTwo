@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     public bool speedChainBonus { get; set; }
     public float speedChainCount { get; set; }
+    public bool onDamageSpeedBonus { get; set; }
 
     private void Awake() {
         Instance = this;

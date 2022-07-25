@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     private bool canTakeDamage = true;
     private bool speedRepeat = true;
+    private float onDamageSpeed = 0;
 
     [HideInInspector] public static float speedKillTimer = 0;
 
@@ -96,7 +97,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() {
         //movement
-        rb.velocity = moveInput * (moveSpeed + GameManager.Instance.flatSpeedModifier + GameManager.Instance.speedChainCount) * GameManager.Instance.dynamicSpeedModifier;
+        float totalMoveSpeed = moveSpeed + GameManager.Instance.flatSpeedModifier + GameManager.Instance.speedChainCount + onDamageSpeed;
+        rb.velocity = moveInput * (totalMoveSpeed) * GameManager.Instance.dynamicSpeedModifier;
 
         //aiming
         Vector2 aimDir = mousePos - rb.position;
@@ -109,11 +111,20 @@ public class Player : MonoBehaviour
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.CompareTag("Enemy") && canTakeDamage){
             GameManager.Instance.playerHealth -= 10;
+            if(GameManager.Instance.onDamageSpeedBonus){
+                StartCoroutine(DamagedBonusSpeed());
+                print(onDamageSpeed);
+            }
             if(GameManager.Instance.playerHealth <= 0){
                 print("GAMEOVER");
             }
             StartCoroutine(TakeDamageTimer());
         }
+    }
+    IEnumerator DamagedBonusSpeed(){
+        onDamageSpeed = 5;
+        yield return new WaitForSeconds(3f);
+        onDamageSpeed = 0;
     }
     IEnumerator TakeDamageTimer(){
         canTakeDamage = false;
