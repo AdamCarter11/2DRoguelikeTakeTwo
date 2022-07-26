@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06286c94300e0349bd8946ced905f77, type: 3}
   m_Name: reloadSpeedSpeed
   m_EditorClassIdentifier: 
-  nameOfUpgrade: 
-  upgradeDesc: 
-  upgradeSprite: {fileID: 0}
+  nameOfUpgrade: reloadSpeedSpeed
+  upgradeDesc: Reduce reload time based on movement speed
+  upgradeSprite: {fileID: 21300000, guid: bca1252e84354b044a4c30967434e627, type: 3}
   unlockedUpgrades: []
-  prereqs: {fileID: 0}
+  prereqs: {fileID: 11400000, guid: 6c6cc51d6f842aa439f253c5691cc7a9, type: 2}

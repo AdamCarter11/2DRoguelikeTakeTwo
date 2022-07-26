@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06286c94300e0349bd8946ced905f77, type: 3}
   m_Name: FlatReload
   m_EditorClassIdentifier: 
-  nameOfUpgrade: 
-  upgradeDesc: 
-  upgradeSprite: {fileID: 0}
-  unlockedUpgrades: []
+  nameOfUpgrade: FlatReload
+  upgradeDesc: A flat reload speed upgrade
+  upgradeSprite: {fileID: 21300000, guid: 9d0fc2a94593eb545a2cd72ad72136ab, type: 3}
+  unlockedUpgrades:
+  - {fileID: 11400000, guid: f0aee380228bc6d44a0c90ccf551953b, type: 2}
   prereqs: {fileID: 0}

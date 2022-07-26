@@ -17,4 +17,5 @@ MonoBehaviour:
   upgradeSprite: {fileID: 21300000, guid: 791b3203852b49346a78cecaa27758e3, type: 3}
   unlockedUpgrades:
   - {fileID: 11400000, guid: 5d1ff547ff0316a4e8e470188368259d, type: 2}
+  - {fileID: 11400000, guid: 6fa7192c451688a4e83aa2af0b356636, type: 2}
   prereqs: {fileID: 0}
