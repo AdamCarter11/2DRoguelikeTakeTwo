@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private bool speedRepeat = true;
     private float onDamageSpeed = 0;
     private int ammo;
+    private float tempReload;
+
+    private float totalMoveSpeed;
 
     [HideInInspector] public static float speedKillTimer = 0;
 
@@ -32,7 +35,6 @@ public class Player : MonoBehaviour
         xpBar.SetXp(GameManager.Instance.playerXp);
 
         GameManager.Instance.flatSpeedModifier = 0;
-        GameManager.Instance.dynamicSpeedModifier = 1;
 
         // damage
         GameManager.Instance.flatDamage = 1;
@@ -60,11 +62,10 @@ public class Player : MonoBehaviour
     private void SpeedChainTimer(){
         if(speedKillTimer > 0){
             speedKillTimer--;
-            print(speedKillTimer);
         }
         if(speedKillTimer == 0){
             GameManager.Instance.speedChainCount = 0;
-            print("KillStreak Lost");
+            //print("KillStreak Lost");
             speedRepeat = true;
             CancelInvoke("SpeedChainTimer");
         }
@@ -87,11 +88,21 @@ public class Player : MonoBehaviour
         moveInput.Normalize();
     }
     private void AimingFiring(){
+        //reload time
+        tempReload = GameManager.Instance.reloadTime;
+        if(GameManager.Instance.reloadSpeedSpeedBonus){
+            tempReload = tempReload / (moveSpeed / 4);
+        }
+
         //firing
         if(Input.GetMouseButton(0) && canShoot && ammo > 0){
             weapon.Fire();
             canShoot = false;
-            StartCoroutine(ShootDelay(GameManager.Instance.shotDelay));
+            float tempShotSpeed = GameManager.Instance.shotDelay;
+            if(GameManager.Instance.shotSpeedSpeedBonus){
+                tempShotSpeed = tempShotSpeed / (totalMoveSpeed / 2);
+            }
+            StartCoroutine(ShootDelay(tempShotSpeed));
             ammo--;
             if(ammo <= 0){
                 StartCoroutine(Reload());
@@ -102,7 +113,7 @@ public class Player : MonoBehaviour
 
     //reloading
     IEnumerator Reload(){
-        yield return new WaitForSeconds(GameManager.Instance.reloadTime);
+        yield return new WaitForSeconds(tempReload);
         ammo = GameManager.Instance.playerAmmo;
     }
     //used for shot delay
@@ -113,8 +124,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() {
         //movement
-        float totalMoveSpeed = moveSpeed + GameManager.Instance.flatSpeedModifier + GameManager.Instance.speedChainCount + onDamageSpeed;
-        rb.velocity = moveInput * (totalMoveSpeed) * GameManager.Instance.dynamicSpeedModifier;
+        totalMoveSpeed = moveSpeed + GameManager.Instance.flatSpeedModifier + GameManager.Instance.speedChainCount + onDamageSpeed;
+        rb.velocity = moveInput * (totalMoveSpeed);
 
         //aiming
         Vector2 aimDir = mousePos - rb.position;

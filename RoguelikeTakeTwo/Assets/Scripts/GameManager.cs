@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     //upgrades
     public float flatSpeedModifier {get; set;}
-    public float dynamicSpeedModifier {get; set;}
 
     public bool speedChainBonus { get; set; }
     public float speedChainCount { get; set; }
@@ -34,9 +33,11 @@ public class GameManager : MonoBehaviour
 
     public float shotDelay { get; set; }
     public bool onDamageShotSpeedBonus { get; set; }
+    public bool shotSpeedSpeedBonus { get; set; }
 
     public int playerAmmo { get; set; }
     public float reloadTime { get; set; }
+    public bool reloadSpeedSpeedBonus { get; set; }
 
     private void Awake() {
         Instance = this;

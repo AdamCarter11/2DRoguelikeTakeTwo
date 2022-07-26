@@ -24,13 +24,25 @@ public class ButtonUpgrades : MonoBehaviour
         {
             GameManager.Instance.speedChainBonus = true;
         }
+        else if (abilityName == "reloadSpeedSpeed")
+        {
+            GameManager.Instance.reloadSpeedSpeedBonus = true;
+        }
         else if (abilityName == "FlatShotSpeed")
         {
             GameManager.Instance.shotDelay = .2f;
         }
+        else if (abilityName == "ShotSpeedSpeed")
+        {
+            GameManager.Instance.shotSpeedSpeedBonus = true;
+        }
         else if (abilityName == "DamagedShotSpeed")
         {
             GameManager.Instance.onDamageShotSpeedBonus = true;
+        }
+        else if (abilityName == "FlatReload")
+        {
+            GameManager.Instance.reloadTime = 1f;
         }
         else if (abilityName == "DamagedSpeed")
         {
