@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public float shotDelay { get; set; }
     public bool onDamageShotSpeedBonus { get; set; }
 
+    public int playerAmmo { get; set; }
+    public float reloadTime { get; set; }
+
     private void Awake() {
         Instance = this;
     }

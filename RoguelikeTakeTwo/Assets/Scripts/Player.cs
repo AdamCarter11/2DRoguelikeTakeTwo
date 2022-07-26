@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private bool canTakeDamage = true;
     private bool speedRepeat = true;
     private float onDamageSpeed = 0;
+    private int ammo;
 
     [HideInInspector] public static float speedKillTimer = 0;
 
@@ -37,6 +38,11 @@ public class Player : MonoBehaviour
         GameManager.Instance.flatDamage = 1;
         GameManager.Instance.lowerHealthDamage = false;
         GameManager.Instance.shotDelay = .5f;
+
+        //ammo
+        GameManager.Instance.reloadTime = 4f;
+        GameManager.Instance.playerAmmo = 6;
+        ammo = GameManager.Instance.playerAmmo;
     }
 
     void Update()
@@ -82,14 +88,23 @@ public class Player : MonoBehaviour
     }
     private void AimingFiring(){
         //firing
-        if(Input.GetMouseButton(0) && canShoot){
+        if(Input.GetMouseButton(0) && canShoot && ammo > 0){
             weapon.Fire();
             canShoot = false;
             StartCoroutine(ShootDelay(GameManager.Instance.shotDelay));
+            ammo--;
+            if(ammo <= 0){
+                StartCoroutine(Reload());
+            }
         }
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
+    //reloading
+    IEnumerator Reload(){
+        yield return new WaitForSeconds(GameManager.Instance.reloadTime);
+        ammo = GameManager.Instance.playerAmmo;
+    }
     //used for shot delay
     IEnumerator ShootDelay(float delay){
         yield return new WaitForSeconds(delay);
