@@ -62,11 +62,16 @@ public class ButtonUpgrades : MonoBehaviour
         }
         else if (abilityName == "FlatDamage")
         {
-            GameManager.Instance.flatDamage += 1;
+            GameManager.Instance.bonusDamage += 1;
         }
         else if (abilityName == "LowerHealth")
         {
             GameManager.Instance.lowerHealthDamage = true;
+        }
+        else if (abilityName == "ArmorUp")
+        {
+            GameManager.Instance.armorActive = true;
+            GameManager.Instance.armorHealth = GameManager.Instance.maxArmorHealth;
         }
 
         panelPopUp.SetActive(false);

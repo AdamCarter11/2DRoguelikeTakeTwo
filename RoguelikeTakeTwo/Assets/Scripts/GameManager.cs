@@ -19,8 +19,18 @@ public class GameManager : MonoBehaviour
 
     public float regenSpeed { get; set; }
 
+    // armor
+
+    public bool armorActive { get; set; }
+
+    public float armorHealth { get; set; }
+
+    public float maxArmorHealth { get; set; }
+
     // damage
     public float flatDamage { get; set; }
+
+    public float bonusDamage { get; set; }
     
     public bool lowerHealthDamage { get; set; }
 

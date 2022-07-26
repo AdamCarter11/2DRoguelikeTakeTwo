@@ -37,9 +37,11 @@ public class Player : MonoBehaviour
         GameManager.Instance.flatSpeedModifier = 0;
 
         // damage
-        GameManager.Instance.flatDamage = 1;
+        GameManager.Instance.flatDamage = 1; // weapon damage
+        GameManager.Instance.bonusDamage = 0;
         GameManager.Instance.lowerHealthDamage = false;
         GameManager.Instance.shotDelay = .5f;
+
 
         //ammo
         GameManager.Instance.reloadTime = 4f;
@@ -137,7 +139,20 @@ public class Player : MonoBehaviour
     //setup this way so we can maybe have an ugprade for invincibility time
     private void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.CompareTag("Enemy") && canTakeDamage){
-            GameManager.Instance.playerHealth -= 10;
+            if (!GameManager.Instance.armorActive)
+            {
+                GameManager.Instance.playerHealth -= 10;
+            }
+            else
+            {
+                GameManager.Instance.playerHealth -= (10 - (GameManager.Instance.armorHealth / 10));
+                GameManager.Instance.armorHealth -= 10;
+                if (GameManager.Instance.armorHealth <= 0)
+                {
+                    GameManager.Instance.armorActive = false;
+                }
+            }
+            
             if(GameManager.Instance.onDamageSpeedBonus){
                 StartCoroutine(DamagedBonusSpeed());
             }

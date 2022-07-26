@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a06286c94300e0349bd8946ced905f77, type: 3}
-  m_Name: Flat Damage
+  m_Name: ArmorUp
   m_EditorClassIdentifier: 
-  nameOfUpgrade: Damage Upgrade
-  upgradeDesc: Damage up 0.25%
-  upgradeSprite: {fileID: 21300000, guid: 1445ff613caebea4ea168254aa059324, type: 3}
+  nameOfUpgrade: Armor Upgrade
+  upgradeDesc: Equip armor
+  upgradeSprite: {fileID: 21300000, guid: 37c8ed5762a216f4fbe6673b59b72dc8, type: 3}
   unlockedUpgrades: []
   prereqs: {fileID: 0}

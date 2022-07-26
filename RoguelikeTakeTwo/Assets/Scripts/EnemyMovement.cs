@@ -39,12 +39,14 @@ public class EnemyMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Bullet")){
             if (!GameManager.Instance.lowerHealthDamage)
             {
-                health -= GameManager.Instance.flatDamage + other.GetComponent<Bullet>().damage_falloff;
+                health -= GameManager.Instance.flatDamage + ((0.25f * GameManager.Instance.bonusDamage) * GameManager.Instance.flatDamage)
+                    + other.GetComponent<Bullet>().damage_falloff;
             }
             else
             {
-                health -= GameManager.Instance.flatDamage + other.GetComponent<Bullet>().damage_falloff +
-                    ((1 - (GameManager.Instance.playerHealth / GameManager.Instance.maxHealth)) * GameManager.Instance.flatDamage);
+                health -= GameManager.Instance.flatDamage + ((0.25f * GameManager.Instance.bonusDamage) * GameManager.Instance.flatDamage)
+                    + other.GetComponent<Bullet>().damage_falloff 
+                    + ((1 - (GameManager.Instance.playerHealth / GameManager.Instance.maxHealth)) * GameManager.Instance.flatDamage);
             }
             Destroy(other.gameObject);
             if(health <= 0){
