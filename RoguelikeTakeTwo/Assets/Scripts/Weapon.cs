@@ -8,9 +8,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] Transform firePoint;
     [SerializeField] float fireSpeed = 20f;
 
+    private void Start() {
+        GameManager.Instance.projSpeed = fireSpeed;
+    }
     public void Fire(){
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * GameManager.Instance.projSpeed, ForceMode2D.Impulse);
         Destroy(bullet, 10f);
     }
 }

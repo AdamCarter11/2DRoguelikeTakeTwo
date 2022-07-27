@@ -28,6 +28,14 @@ public class ButtonUpgrades : MonoBehaviour
         {
             GameManager.Instance.reloadSpeedSpeedBonus = true;
         }
+        else if (abilityName == "FlatAmmo")
+        {
+            GameManager.Instance.playerAmmo += 6;
+        }
+        else if (abilityName == "FlatProjSpeed")
+        {
+            GameManager.Instance.projSpeed += 10;
+        }
         else if (abilityName == "FlatShotSpeed")
         {
             GameManager.Instance.shotDelay = .2f;

@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     public float reloadTime { get; set; }
     public bool reloadSpeedSpeedBonus { get; set; }
 
+    public float projSpeed { get; set; }
+
     private void Awake() {
         Instance = this;
     }
