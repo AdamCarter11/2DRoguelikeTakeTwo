@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06286c94300e0349bd8946ced905f77, type: 3}
   m_Name: FlatProjSpeed
   m_EditorClassIdentifier: 
-  nameOfUpgrade: 
-  upgradeDesc: 
-  upgradeSprite: {fileID: 0}
+  nameOfUpgrade: FlatProjSpeed
+  upgradeDesc: Increases projectile speed by a flat amount
+  upgradeSprite: {fileID: 21300000, guid: 0e153a202a80383459e557af3e6a4222, type: 3}
   unlockedUpgrades: []
   prereqs: {fileID: 0}

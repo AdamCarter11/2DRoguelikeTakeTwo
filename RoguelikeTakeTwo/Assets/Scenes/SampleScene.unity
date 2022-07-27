@@ -2712,7 +2712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: allUpgrades.Array.size
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: allUpgrades.Array.data[0]
@@ -2770,6 +2770,14 @@ PrefabInstance:
       propertyPath: allUpgrades.Array.data[13]
       value: 
       objectReference: {fileID: 11400000, guid: fb0027f8a0dfa27479948f04f13e2364, type: 2}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: allUpgrades.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: cd70a71c232a7154c9d26e2b81a39b27, type: 2}
+    - target: {fileID: 1679316240816754731, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+      propertyPath: allUpgrades.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: d818f1262a9232740b78ce575e193099, type: 2}
     - target: {fileID: 1679316241379534912, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

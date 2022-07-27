@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06286c94300e0349bd8946ced905f77, type: 3}
   m_Name: FlatAmmo
   m_EditorClassIdentifier: 
-  nameOfUpgrade: 
-  upgradeDesc: 
-  upgradeSprite: {fileID: 0}
+  nameOfUpgrade: FlatAmmo
+  upgradeDesc: Increases ammo by a flat amount
+  upgradeSprite: {fileID: 21300000, guid: cb6981e433aa0124aa39afc1883f81ee, type: 3}
   unlockedUpgrades: []
   prereqs: {fileID: 0}
