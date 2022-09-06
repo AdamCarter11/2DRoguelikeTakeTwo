@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private bool canTakeDamage = true;
     private bool speedRepeat = true;
     private float onDamageSpeed = 0;
+    private float trapSlowDown = 0;
     private int ammo;
     private float tempReload;
 
@@ -132,7 +133,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() {
         //movement
-        totalMoveSpeed = moveSpeed + GameManager.Instance.flatSpeedModifier + GameManager.Instance.speedChainCount + onDamageSpeed;
+        totalMoveSpeed = moveSpeed + GameManager.Instance.flatSpeedModifier + GameManager.Instance.speedChainCount + onDamageSpeed + trapSlowDown;
         rb.velocity = moveInput * (totalMoveSpeed);
         playerSpeedText.text = "Speed: " + totalMoveSpeed;
 
@@ -177,8 +178,15 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("damageTrap")){
             GameManager.Instance.playerHealth -= 5;
         }
+        if(other.gameObject.CompareTag("slowTrap")){
+            StartCoroutine(ActivteSlowTrap());
+        }
     }
-    
+    IEnumerator ActivteSlowTrap(){
+        trapSlowDown = -3;
+        yield return new WaitForSeconds(5f);
+        trapSlowDown = 0;
+    }
     IEnumerator DamagedBonusSpeed(){
         onDamageSpeed = 5;
         yield return new WaitForSeconds(3f);
