@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private Text playerSpeedText;
+    [SerializeField] private Text playerAmmoText;
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
@@ -47,6 +50,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.reloadTime = 4f;
         GameManager.Instance.playerAmmo = 6;
         ammo = GameManager.Instance.playerAmmo;
+        playerAmmoText.text = "Ammo: " + ammo;
     }
 
     void Update()
@@ -106,6 +110,7 @@ public class Player : MonoBehaviour
             }
             StartCoroutine(ShootDelay(tempShotSpeed));
             ammo--;
+            playerAmmoText.text = "Ammo: " + ammo;
             if(ammo <= 0){
                 StartCoroutine(Reload());
             }
@@ -117,6 +122,7 @@ public class Player : MonoBehaviour
     IEnumerator Reload(){
         yield return new WaitForSeconds(tempReload);
         ammo = GameManager.Instance.playerAmmo;
+        playerAmmoText.text = "Ammo: " + ammo;
     }
     //used for shot delay
     IEnumerator ShootDelay(float delay){
@@ -128,6 +134,7 @@ public class Player : MonoBehaviour
         //movement
         totalMoveSpeed = moveSpeed + GameManager.Instance.flatSpeedModifier + GameManager.Instance.speedChainCount + onDamageSpeed;
         rb.velocity = moveInput * (totalMoveSpeed);
+        playerSpeedText.text = "Speed: " + totalMoveSpeed;
 
         //aiming
         Vector2 aimDir = mousePos - rb.position;
@@ -165,6 +172,13 @@ public class Player : MonoBehaviour
             StartCoroutine(TakeDamageTimer());
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("damageTrap")){
+            GameManager.Instance.playerHealth -= 5;
+        }
+    }
+    
     IEnumerator DamagedBonusSpeed(){
         onDamageSpeed = 5;
         yield return new WaitForSeconds(3f);
