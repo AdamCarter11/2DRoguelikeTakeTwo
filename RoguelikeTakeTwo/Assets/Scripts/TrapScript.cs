@@ -15,11 +15,11 @@ public class TrapScript : MonoBehaviour
     void Update()
     {
         distanceToCam = Camera.main.transform.position - transform.position;
-        if(distanceToCam.x < -15 || distanceToCam.x > 15){
+        if(distanceToCam.x < -20 || distanceToCam.x > 20){
             //print("DESTROY");
             Destroy(this.gameObject);
         }
-        if(distanceToCam.y < -12 || distanceToCam.y > 12){
+        if(distanceToCam.y < -17 || distanceToCam.y > 17){
             //print("DESTROY");
             Destroy(this.gameObject);
         }

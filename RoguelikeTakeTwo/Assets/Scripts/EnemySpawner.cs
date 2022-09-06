@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float time = 1.5f;
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject[] traps;
     private Vector2 spawnPos;
 
     void Start()
@@ -33,8 +34,13 @@ public class EnemySpawner : MonoBehaviour
             //bottom
             spawnPos = Camera.main.ViewportToWorldPoint(new Vector2(randomPos, -.1f));
         }
-        
-        Instantiate(enemies[Random.Range(0,enemies.Length)], spawnPos, Quaternion.identity);
+        int enemyOrTraps = Random.Range(0,100);
+        if(enemyOrTraps > 40){
+            Instantiate(enemies[Random.Range(0,enemies.Length)], spawnPos, Quaternion.identity);
+        }
+        else{
+            Instantiate(traps[Random.Range(0,traps.Length)], spawnPos, Quaternion.identity);
+        }
         yield return new WaitForSeconds(time);
         StartCoroutine(SpawnEnemy());
     }
