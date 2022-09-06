@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private float startingSpeed;
     private Rigidbody2D rb;
     private Vector2 movement;
+    private bool canMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,9 @@ public class EnemyMovement : MonoBehaviour
         MoveEnemy(movement);
     }
     void MoveEnemy(Vector2 direction){
-        rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+        if(canMove){
+            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
+        }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Bullet")){
@@ -59,11 +62,30 @@ public class EnemyMovement : MonoBehaviour
                     Player.speedKillTimer = 5;
                 }
                 GameManager.Instance.playerXp++;
-                Destroy(gameObject);
+                if(gameObject.name == "ExplodingEnemy"){
+                    transform.GetChild(0).gameObject.SetActive(true);
+                    canMove = false;
+                    StartCoroutine(FadeTo(0.0f,1.0f));
+                }
+                else{
+                    Destroy(gameObject);
+                }
+                
             }
         }
     }
 
+    //Used to fade the exploding enemy
+    IEnumerator FadeTo(float endVal, float dur){
+        float alpha = transform.GetComponent<SpriteRenderer>().material.color.a;
+        for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / dur){
+            Color newColor = new Color(1,1,1, Mathf.Lerp(alpha, dur, t));
+            print(newColor);
+            transform.GetComponent<SpriteRenderer>().material.color = newColor;
+            yield return null;
+        }
+    }
+    
     //when it hits the player, it sets its speed to half for a second
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Player")){
