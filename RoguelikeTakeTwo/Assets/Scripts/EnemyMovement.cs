@@ -39,6 +39,11 @@ public class EnemyMovement : MonoBehaviour
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("explosion")){
+            health -= 1;
+            EnemyDeath();
+        }
+
         if(other.gameObject.CompareTag("Bullet")){
             if (!GameManager.Instance.lowerHealthDamage)
             {
@@ -52,38 +57,55 @@ public class EnemyMovement : MonoBehaviour
                     + ((1 - (GameManager.Instance.playerHealth / GameManager.Instance.maxHealth)) * GameManager.Instance.flatDamage);
             }
             Destroy(other.gameObject);
-            if(health <= 0){
-                if(GameManager.Instance.killChainBonus)
-                {
-                    GameManager.Instance.killChainCount++;
-                }
-                if(GameManager.Instance.speedChainBonus){
-                    GameManager.Instance.speedChainCount += .5f;
-                    Player.speedKillTimer = 5;
-                }
-                GameManager.Instance.playerXp++;
-                if(gameObject.name == "ExplodingEnemy"){
+            EnemyDeath();
+        }
+    }
+
+    private void EnemyDeath(){
+        if(health <= 0){
+                
+                
+                if(gameObject.tag == "explosionEnemy"){
                     transform.GetChild(0).gameObject.SetActive(true);
+                    print(transform.childCount);
                     canMove = false;
-                    StartCoroutine(FadeTo(0.0f,1.0f));
-                }
+                    StartCoroutine(FadeTo(0.0f,.5f));
+
+                    if(GameManager.Instance.killChainBonus)
+                    {
+                        GameManager.Instance.killChainCount++;
+                    }
+                    if(GameManager.Instance.speedChainBonus){
+                        GameManager.Instance.speedChainCount += .5f;
+                        Player.speedKillTimer = 5;
+                    }
+                    GameManager.Instance.playerXp++;
+                } 
                 else{
+                    if(GameManager.Instance.killChainBonus)
+                    {
+                        GameManager.Instance.killChainCount++;
+                    }
+                    if(GameManager.Instance.speedChainBonus){
+                        GameManager.Instance.speedChainCount += .5f;
+                        Player.speedKillTimer = 5;
+                    }
+                    GameManager.Instance.playerXp++;
                     Destroy(gameObject);
                 }
                 
-            }
         }
     }
 
     //Used to fade the exploding enemy
     IEnumerator FadeTo(float endVal, float dur){
-        float alpha = transform.GetComponent<SpriteRenderer>().material.color.a;
-        for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / dur){
-            Color newColor = new Color(1,1,1, Mathf.Lerp(alpha, dur, t));
-            print(newColor);
-            transform.GetComponent<SpriteRenderer>().material.color = newColor;
+        Color alpha = transform.GetComponent<SpriteRenderer>().color;
+        while(alpha.a > endVal){
+            alpha.a -= dur * Time.deltaTime;
+            transform.GetComponent<SpriteRenderer>().color = alpha;
             yield return null;
         }
+        Destroy(gameObject);
     }
     
     //when it hits the player, it sets its speed to half for a second

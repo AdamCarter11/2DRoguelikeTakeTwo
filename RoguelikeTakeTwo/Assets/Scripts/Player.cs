@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
     //Currently being used to take damage when colliding with enemies
     //setup this way so we can maybe have an ugprade for invincibility time
     private void OnCollisionStay2D(Collision2D other) {
-        if(other.gameObject.CompareTag("Enemy") && canTakeDamage){
+        if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("explosionEnemy") && canTakeDamage){
             if (!GameManager.Instance.armorActive)
             {
                 GameManager.Instance.playerHealth -= 10;
