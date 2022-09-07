@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - damageTrap
   - slowTrap
+  - explosion
+  - explosionEnemy
   layers:
   - Default
   - TransparentFX
