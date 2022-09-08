@@ -402,6 +402,7 @@ MonoBehaviour:
   traps:
   - {fileID: 1185241017638625058, guid: 36b09d8dfe20e9c45a3b77c30c017a54, type: 3}
   - {fileID: 645769581957735308, guid: c024de76b5941694bb0b2cf0b918f628, type: 3}
+  - {fileID: 5636803896541095539, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
 --- !u!4 &276272330
 Transform:
   m_ObjectHideFlags: 0
@@ -648,6 +649,7 @@ MonoBehaviour:
   playerSpeedText: {fileID: 1094469575}
   playerAmmoText: {fileID: 1956232225}
   lootCratePanel: {fileID: 1674062140}
+  enemyToSpawn: {fileID: 7042232404871029520, guid: f64a286a61aede24fa7b52abc5c5f126, type: 3}
   weapon: {fileID: 502132458}
   xpBar: {fileID: 1183374506}
 --- !u!114 &502132458
@@ -3471,6 +3473,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67c723f4250e35145b47a4018e3419c7, type: 3}
+--- !u!1001 &5636803896461373911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095536, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636803896541095539, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
+      propertyPath: m_Name
+      value: SpawnerTrap
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2101dee37cf7545468cee3a1350a0f01, type: 3}
 --- !u!1001 &6184164426366359433
 PrefabInstance:
   m_ObjectHideFlags: 0

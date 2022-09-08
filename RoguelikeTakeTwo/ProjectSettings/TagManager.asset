@@ -12,6 +12,7 @@ TagManager:
   - explosionEnemy
   - LootCrate
   - FlyingEnemy
+  - spawnerTrap
   layers:
   - Default
   - TransparentFX

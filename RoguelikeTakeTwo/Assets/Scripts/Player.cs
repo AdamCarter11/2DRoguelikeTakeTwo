@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Text playerSpeedText;
     [SerializeField] private Text playerAmmoText;
     [SerializeField] private GameObject lootCratePanel;
+    [SerializeField] private GameObject enemyToSpawn;
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
@@ -184,12 +185,21 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("damageTrap")){
             GameManager.Instance.playerHealth -= 5;
+            Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("slowTrap")){
             StartCoroutine(ActivteSlowTrap());
+            Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("explosion") && canTakeDamage){
             damageEffects(20);
+        }
+        if(other.gameObject.CompareTag("spawnerTrap")){
+            Instantiate(enemyToSpawn, new Vector2(transform.position.x - 5f, transform.position.y), Quaternion.identity);
+            Instantiate(enemyToSpawn, new Vector2(transform.position.x, transform.position.y + 5), Quaternion.identity);
+            Instantiate(enemyToSpawn, new Vector2(transform.position.x + 5f, transform.position.y), Quaternion.identity);
+            Instantiate(enemyToSpawn, new Vector2(transform.position.x, transform.position.y - 5f), Quaternion.identity);
+            Destroy(other.gameObject);
         }
 
         //What happens when you collect the loot crate
