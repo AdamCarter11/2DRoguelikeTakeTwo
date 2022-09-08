@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Text playerSpeedText;
     [SerializeField] private Text playerAmmoText;
+    [SerializeField] private GameObject lootCratePanel;
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
@@ -150,6 +151,9 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("explosionEnemy") && canTakeDamage){
             damageEffects(10);
         }
+        if(other.gameObject.CompareTag("FlyingEnemy") && canTakeDamage){
+            damageEffects(15);
+        }
     }
     private void damageEffects(float damageToTake){
         if (!GameManager.Instance.armorActive)
@@ -186,6 +190,12 @@ public class Player : MonoBehaviour
         }
         if(other.gameObject.CompareTag("explosion") && canTakeDamage){
             damageEffects(20);
+        }
+
+        //What happens when you collect the loot crate
+        if(other.gameObject.CompareTag("LootCrate")){
+            Time.timeScale = 0;
+            lootCratePanel.SetActive(true);
         }
     }
     IEnumerator ActivteSlowTrap(){

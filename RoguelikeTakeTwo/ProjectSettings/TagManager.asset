@@ -10,6 +10,8 @@ TagManager:
   - slowTrap
   - explosion
   - explosionEnemy
+  - LootCrate
+  - FlyingEnemy
   layers:
   - Default
   - TransparentFX

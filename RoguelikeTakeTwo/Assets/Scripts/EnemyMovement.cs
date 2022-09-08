@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 movement;
     private bool canMove = true;
     private float scaledVal = 0;
+    private Vector3 dir;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,20 +25,44 @@ public class EnemyMovement : MonoBehaviour
         }
         scaledVal = Mathf.Round(Time.time / scaleTime);
         health += scaledVal;
+
+        if(gameObject.tag == "FlyingEnemy"){
+            dir = target.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+            dir.Normalize();
+            movement = dir;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 dir = target.position - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        dir.Normalize();
-        movement = dir;
-        
+        if(gameObject.tag != "FlyingEnemy"){
+            dir = target.position - transform.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+            dir.Normalize();
+            movement = dir;
+        }
+        else{
+            if(Vector3.Distance(target.position, transform.position) > 15){
+                //Destroy(gameObject);
+                dir = target.position - transform.position;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                rb.rotation = angle;
+                dir.Normalize();
+                movement = dir;
+            }
+        }
     }
     private void FixedUpdate() {
-        MoveEnemy(movement);
+        //if(gameObject.tag != "FlyingEnemy"){
+            MoveEnemy(movement);
+        //}
+       // else{
+            
+        //}
     }
     void MoveEnemy(Vector2 direction){
         if(canMove){
@@ -73,7 +98,6 @@ public class EnemyMovement : MonoBehaviour
                 
                 if(gameObject.tag == "explosionEnemy"){
                     transform.GetChild(0).gameObject.SetActive(true);
-                    print(transform.childCount);
                     canMove = false;
                     StartCoroutine(FadeTo(0.0f,.5f));
 
@@ -97,10 +121,19 @@ public class EnemyMovement : MonoBehaviour
                         Player.speedKillTimer = 5;
                     }
                     GameManager.Instance.playerXp++;
+                    LootBoxLogic();
                     Destroy(gameObject);
                 }
                 
         }
+    }
+
+    private void LootBoxLogic(){
+        int randomSide = Random.Range(1,101);
+        if(randomSide > 90){
+            //spawn loot box
+            print("LOOT BOX");
+        }  
     }
 
     //Used to fade the exploding enemy
@@ -111,6 +144,7 @@ public class EnemyMovement : MonoBehaviour
             transform.GetComponent<SpriteRenderer>().color = alpha;
             yield return null;
         }
+        LootBoxLogic();
         Destroy(gameObject);
     }
     
