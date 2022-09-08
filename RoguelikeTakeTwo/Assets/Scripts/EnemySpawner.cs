@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject[] traps;
+    private float scaleTime = 0;
     private Vector2 spawnPos;
 
     void Start()
@@ -41,7 +42,15 @@ public class EnemySpawner : MonoBehaviour
         else{
             Instantiate(traps[Random.Range(0,traps.Length)], spawnPos, Quaternion.identity);
         }
-        yield return new WaitForSeconds(time);
+        print("Enemy spawn time: " + (time-scaleTime));
+        yield return new WaitForSeconds((time-scaleTime));
+        if(scaleTime < 1f){
+            scaleTime = Mathf.Round(Time.time / 30) / 10;
+        }
+        else{
+            scaleTime = 1f;
+        }
+
         StartCoroutine(SpawnEnemy());
     }
 }

@@ -146,15 +146,20 @@ public class Player : MonoBehaviour
     //Currently being used to take damage when colliding with enemies
     //setup this way so we can maybe have an ugprade for invincibility time
     private void OnCollisionStay2D(Collision2D other) {
+        
         if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("explosionEnemy") && canTakeDamage){
-            if (!GameManager.Instance.armorActive)
+            damageEffects(10);
+        }
+    }
+    private void damageEffects(float damageToTake){
+        if (!GameManager.Instance.armorActive)
             {
-                GameManager.Instance.playerHealth -= 10;
+                GameManager.Instance.playerHealth -= damageToTake;
             }
             else
             {
-                GameManager.Instance.playerHealth -= (10 - (GameManager.Instance.armorHealth / 10));
-                GameManager.Instance.armorHealth -= 10;
+                GameManager.Instance.playerHealth -= (damageToTake - (GameManager.Instance.armorHealth / 10));
+                GameManager.Instance.armorHealth -= damageToTake;
                 if (GameManager.Instance.armorHealth <= 0)
                 {
                     GameManager.Instance.armorActive = false;
@@ -171,15 +176,16 @@ public class Player : MonoBehaviour
                 print("GAMEOVER");
             }
             StartCoroutine(TakeDamageTimer());
-        }
     }
-
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("damageTrap")){
             GameManager.Instance.playerHealth -= 5;
         }
         if(other.gameObject.CompareTag("slowTrap")){
             StartCoroutine(ActivteSlowTrap());
+        }
+        if(other.gameObject.CompareTag("explosion") && canTakeDamage){
+            damageEffects(20);
         }
     }
     IEnumerator ActivteSlowTrap(){

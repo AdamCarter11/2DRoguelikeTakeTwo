@@ -7,18 +7,23 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float speed;
     [SerializeField] float health;
+    [SerializeField] float scaleTime; //How long it takes to make this enemy harder
     private float startingSpeed;
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool canMove = true;
+    private float scaledVal = 0;
     // Start is called before the first frame update
     void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         startingSpeed = speed;
         if(target == null){
             target = GameObject.Find("Player").transform;
         }
+        scaledVal = Mathf.Round(Time.time / scaleTime);
+        health += scaledVal;
     }
 
     // Update is called once per frame
@@ -29,6 +34,7 @@ public class EnemyMovement : MonoBehaviour
         rb.rotation = angle;
         dir.Normalize();
         movement = dir;
+        
     }
     private void FixedUpdate() {
         MoveEnemy(movement);
@@ -40,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("explosion")){
-            health -= 1;
+            health -= (1 + scaledVal);
             EnemyDeath();
         }
 
