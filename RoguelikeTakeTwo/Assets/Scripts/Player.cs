@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Text playerAmmoText;
     [SerializeField] private GameObject lootCratePanel;
     [SerializeField] private GameObject enemyToSpawn;
+    [SerializeField] UpgradeData[] allLootUpgrades;
+    [HideInInspector] public static List<UpgradeData> possibleUpgrades = new List<UpgradeData>();
+    List<int> usedVals = new List<int>();
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
@@ -54,6 +57,16 @@ public class Player : MonoBehaviour
         GameManager.Instance.playerAmmo = 6;
         ammo = GameManager.Instance.playerAmmo;
         playerAmmoText.text = "Ammo: " + ammo;
+
+        // loot crates
+        foreach (var upgrade in allLootUpgrades)
+        {
+            if (upgrade.prereqs == null)
+            {
+                possibleUpgrades.Add(upgrade);
+                //print(upgrade.name);
+            }
+        }
     }
 
     void Update()
@@ -206,8 +219,45 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("LootCrate")){
             Time.timeScale = 0;
             lootCratePanel.SetActive(true);
+            DisplayUpgrade();
         }
     }
+
+    // -------------------------------------------------
+    // Loot Crates
+    private void DisplayUpgrade()
+    {
+        //generates random numbers that don't overlap
+        int val = UniqueRandomVals(0, possibleUpgrades.Count);
+        //sprites
+        lootCratePanel.transform.Find("UpgradeIcon").GetComponent<Image>().sprite = possibleUpgrades[val].upgradeSprite;
+        //descs
+        lootCratePanel.transform.Find("UpgradeDesc").GetComponent<Text>().text = possibleUpgrades[val].upgradeDesc;
+        //clears unique random values list for next iteration
+        usedVals.Clear();
+    }
+
+    private int UniqueRandomVals(int min, int max)
+    {
+        int val = Random.Range(min, max);
+        while (usedVals.Contains(val))
+        {
+            val = Random.Range(min, max);
+        }
+        usedVals.Add(val);
+        return val;
+    }
+
+    public void ApplyUpgrade()
+    {
+        string abilityName = lootCratePanel.transform.Find("UpgradeIcon").GetComponent<Image>().sprite.name;
+        // add upgrades based on name
+
+        lootCratePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+    // -------------------------------------------------
+
     IEnumerator ActivteSlowTrap(){
         trapSlowDown = -3;
         yield return new WaitForSeconds(5f);

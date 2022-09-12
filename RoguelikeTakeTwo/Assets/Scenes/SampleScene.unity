@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 69252871}
   - component: {fileID: 69252873}
   - component: {fileID: 69252872}
+  - component: {fileID: 69252874}
   m_Layer: 5
   m_Name: UpgradeIcon
   m_TagString: Untagged
@@ -198,6 +199,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69252870}
   m_CullTransparentMesh: 1
+--- !u!114 &69252874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69252870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 69252872}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 502132457}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ApplyUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &73725677
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +707,13 @@ MonoBehaviour:
   playerAmmoText: {fileID: 1956232225}
   lootCratePanel: {fileID: 1674062140}
   enemyToSpawn: {fileID: 7042232404871029520, guid: f64a286a61aede24fa7b52abc5c5f126, type: 3}
+  allLootUpgrades:
+  - {fileID: 11400000, guid: 8c3dcb89014e247418de2798e2771a84, type: 2}
+  - {fileID: 11400000, guid: 7d66a786effccfc4fbe54338244735d4, type: 2}
+  - {fileID: 11400000, guid: c2aabc18804b3dc47939854eaab5d14a, type: 2}
+  - {fileID: 11400000, guid: 8dc68a64c6efea44e848b1af97bd801d, type: 2}
+  - {fileID: 11400000, guid: 5dd88ddfd082a2247a992fde81b3753b, type: 2}
+  - {fileID: 11400000, guid: 368d1b72d4803ea40807027af0767297, type: 2}
   weapon: {fileID: 502132458}
   xpBar: {fileID: 1183374506}
 --- !u!114 &502132458
